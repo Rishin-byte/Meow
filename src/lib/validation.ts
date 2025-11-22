@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { Priority, TaskStatus } from '@/types'
+import { Priority, TaskStatus, MessageRole } from '@prisma/client'
 
 // User validation schemas
 export const userRegistrationSchema = z.object({
