@@ -138,7 +138,7 @@ export async function PATCH(
     }
 
     const task = await prisma.task.update({
-      where: { id: params.id },
+      where: { id: id },
       data: updateData,
       include: {
         subject: {
