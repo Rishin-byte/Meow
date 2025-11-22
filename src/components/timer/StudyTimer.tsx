@@ -134,12 +134,11 @@ export default function StudyTimer() {
               cx="128"
               cy="128"
               r="120"
-              className={getSessionTypeColor().replace('bg-', 'text-')}
+              className={`${getSessionTypeColor().replace('bg-', 'text-')} transition-all duration-1000 ease-in-out`}
               strokeWidth="8"
               fill="none"
               strokeDasharray={`${2 * Math.PI * 120}`}
               strokeDashoffset={`${2 * Math.PI * 120 * (1 - progress / 100)}`}
-              className="transition-all duration-1000 ease-in-out"
             />
           </svg>
 
