@@ -43,10 +43,11 @@ model Subject {
   updatedAt   DateTime @updatedAt
 
   // Relations
-  user         User            @relation(fields: [userId], references: [id], onDelete: Cascade)
-  studySessions StudySession[]
-  tasks        Task[]
-  notes        Note[]
+  user           User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  studySessions  StudySession[]
+  tasks          Task[]
+  notes          Note[]
+  schedules      Schedule[]
 
   @@unique([userId, name])
   @@map("subjects")
