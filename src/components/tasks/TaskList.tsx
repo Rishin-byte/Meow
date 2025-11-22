@@ -1,7 +1,8 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
-import { TaskWithSubject, TaskStatus, Priority } from '@/types'
+import { TaskWithSubject } from '@/types'
+import { TaskStatus, Priority } from '@prisma/client'
 
 interface TaskListProps {
   onEdit: (task: TaskWithSubject) => void
