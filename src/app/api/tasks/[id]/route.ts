@@ -6,7 +6,7 @@ import { ApiResponse } from '@/types'
 // GET - Fetch a single task
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const authHeader = request.headers.get('Authorization')
@@ -29,9 +29,11 @@ export async function GET(
       return NextResponse.json(response, { status: 401 })
     }
 
+    const { id } = await params
+
     const task = await prisma.task.findFirst({
       where: {
-        id: params.id,
+        id: id,
         userId: tokenPayload.id
       },
       include: {
