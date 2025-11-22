@@ -76,7 +76,7 @@ export async function GET(
 // PATCH - Update a task
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const authHeader = request.headers.get('Authorization')
@@ -99,10 +99,12 @@ export async function PATCH(
       return NextResponse.json(response, { status: 401 })
     }
 
+    const { id } = await params
+
     // Check if task exists and belongs to user
     const existingTask = await prisma.task.findFirst({
       where: {
-        id: params.id,
+        id: id,
         userId: tokenPayload.id
       }
     })
